@@ -52,9 +52,9 @@ app.listen(port, () => {
     console.log(`Server is running on port ${port}`);
 });
 
-// GET-Anfrage für alle ReservationConflicts
-app.get('/reservationConflicts', (req, res) => {
-    connection.query('SELECT * FROM ReservationConflicts', (err, rows, fields) => {
+// GET-Anfrage für alle Users
+app.get('/users', (req, res) => {
+    connection.query('SELECT * FROM Users', (err, rows, fields) => {
         if (!err) {
             console.log(rows);
             res.send(rows);
@@ -64,9 +64,9 @@ app.get('/reservationConflicts', (req, res) => {
     })
 });
 
-// GET-Anfrage für bestimmte ReservationConflicts anhand der KonfliktID
-app.get('/reservationConflicts/:KonfliktID', (req, res) => {
-    connection.query('SELECT * FROM ReservationConflicts WHERE KonfliktID = ?', [req.params.id], (err, rows, fields) => {
+// GET-Anfrage für bestimmte users anhand der UserID
+app.get('/users/:UserID', (req, res) => {
+    connection.query('SELECT * FROM Users WHERE UserID = ?', [req.params.id], (err, rows, fields) => {
         if (!err) {
             console.log(rows);
             res.send(rows);
@@ -77,8 +77,8 @@ app.get('/reservationConflicts/:KonfliktID', (req, res) => {
 });
 
 // DELETE-Anfrage zum Löschen einer ReservationConflicts anhand der KonfliktID
-app.delete('/reservationConflicts/:KonfliktID', (req, res) => {
-    connection.query('DELETE FROM ReservationConflicts WHERE KonfliktID = ?', [req.params.id], (err, rows, fields) => {
+app.delete('/users/:UserID', (req, res) => {
+    connection.query('DELETE FROM Users WHERE UserID = ?', [req.params.id], (err, rows, fields) => {
         if (!err) {
             res.send('Delete operation was successful')
         } else {

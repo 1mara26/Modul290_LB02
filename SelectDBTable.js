@@ -18,7 +18,7 @@ const connection = mysql.createConnection(config)
 connection.connect(function(err) {
     if (err) throw err;
     console.log('Connected to MySQL database:', connection.config.database);
-    var sqlstmt = 'SELECT * FROM ReservationConflicts';
+    var sqlstmt = 'SELECT * FROM Users';
     // Das SQL-Statement wird vorbereitetet
     connection.query(sqlstmt, function (err, result) {
         if (err) throw err;
